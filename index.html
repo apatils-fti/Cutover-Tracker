@@ -21,7 +21,6 @@
             overflow: hidden;
         }
         
-        /* Header */
         .header {
             background: #1a1a2e;
             color: white;
@@ -34,7 +33,6 @@
         .header h1 { font-size: 14px; font-weight: 600; }
         .header-meta { font-size: 11px; opacity: 0.7; }
         
-        /* Stats */
         .stats-bar {
             background: white;
             padding: 8px 24px;
@@ -49,7 +47,6 @@
         .stat-label { font-size: 10px; color: #6b778c; }
         .spacer { flex: 1; }
         
-        /* Phase Legend */
         .phase-legend {
             display: flex;
             gap: 14px;
@@ -63,7 +60,6 @@
         .phase-dot.shakeout { background: #6554c0; }
         .phase-dot.post-prod { background: #ff8b00; }
         
-        /* Controls */
         .controls-bar {
             background: white;
             padding: 6px 24px;
@@ -105,7 +101,28 @@
             cursor: not-allowed;
         }
         
-        /* Nav */
+        .view-toggle {
+            display: flex;
+            border: 1px solid #dfe1e6;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: auto;
+        }
+        .view-toggle-btn {
+            padding: 4px 10px;
+            border: none;
+            background: white;
+            font-size: 10px;
+            cursor: pointer;
+            border-right: 1px solid #dfe1e6;
+        }
+        .view-toggle-btn:last-child { border-right: none; }
+        .view-toggle-btn:hover { background: #f4f5f7; }
+        .view-toggle-btn.active {
+            background: #0052cc;
+            color: white;
+        }
+        
         .nav-bar {
             display: flex;
             align-items: center;
@@ -125,8 +142,10 @@
             font-size: 10px;
             font-weight: 500;
         }
+        .nav-filter-badge.phase {
+            background: #36b37e;
+        }
         
-        /* Main */
         .main-content {
             display: flex;
             flex: 1 1 auto;
@@ -134,7 +153,6 @@
             min-height: 0;
         }
         
-        /* Sidebar */
         .sidebar {
             width: 260px;
             flex: 0 0 260px;
@@ -161,7 +179,6 @@
             padding: 6px;
         }
         
-        /* App Cards */
         .app-card {
             padding: 10px 12px;
             border: 1px solid #e1e4e8;
@@ -186,23 +203,44 @@
         .mini-stat.blocked { background: #ffebe6; color: #de350b; }
         .mini-stat.not-started { background: #f4f5f7; color: #6b778c; }
         
-        /* All Tasks Button */
-        .all-tasks-btn {
+        .sidebar-nav-btn {
             padding: 10px 12px;
-            border: 2px solid #0052cc;
+            border: 2px solid;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
-            background: #e6f0ff;
             text-align: center;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .sidebar-nav-btn:hover { opacity: 0.9; }
+        .sidebar-nav-btn.selected { color: white; }
+        
+        .sidebar-nav-btn.time {
+            border-color: #0052cc;
+            background: #e6f0ff;
             color: #0052cc;
         }
-        .all-tasks-btn:hover { background: #deebff; }
-        .all-tasks-btn.selected { background: #0052cc; color: white; }
+        .sidebar-nav-btn.time.selected { background: #0052cc; color: white; }
         
-        /* Detail Panel */
+        .sidebar-nav-btn.impact {
+            border-color: #de350b;
+            background: #ffebe6;
+            color: #de350b;
+        }
+        .sidebar-nav-btn.impact.selected { background: #de350b; color: white; }
+        
+        .sidebar-nav-btn.crossapp {
+            border-color: #5243aa;
+            background: #eae6ff;
+            color: #5243aa;
+        }
+        .sidebar-nav-btn.crossapp.selected { background: #5243aa; color: white; }
+        
         .detail-panel {
             flex: 1 1 auto;
             display: flex;
@@ -223,7 +261,6 @@
             color: #6b778c;
         }
         
-        /* App Header */
         .app-header {
             background: #f4f5f7;
             border-radius: 6px;
@@ -232,11 +269,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .app-header-info { }
         .app-header-name { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
         .app-header-meta { font-size: 11px; color: #6b778c; }
-        .app-header-stats { display: flex; gap: 8px; }
+        .app-header-stats { display: flex; gap: 8px; flex-wrap: wrap; }
         .app-stat {
             text-align: center;
             padding: 6px 12px;
@@ -249,8 +288,22 @@
         .app-stat-value.blue { color: #0052cc; }
         .app-stat-value.orange { color: #ff8b00; }
         .app-stat-value.red { color: #de350b; }
+        .app-stat-value.purple { color: #5243aa; }
         
-        /* Task Card in List */
+        .phase-notice {
+            background: #fff4e5;
+            border: 1px solid #ff8b00;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: #ff8b00;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .phase-notice strong { color: #172b4d; }
+        
         .task-card {
             border: 1px solid #e1e4e8;
             border-radius: 6px;
@@ -324,6 +377,32 @@
             color: #6b778c;
         }
         
+        .task-metrics {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 14px;
+            background: #f9fafb;
+            border-left: 1px solid #e1e4e8;
+            min-width: 80px;
+        }
+        .task-metrics-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #de350b;
+        }
+        .task-metrics-label {
+            font-size: 8px;
+            color: #6b778c;
+            text-transform: uppercase;
+        }
+        .task-metrics-breakdown {
+            font-size: 10px;
+            color: #6b778c;
+            margin-top: 2px;
+        }
+        
         .task-times {
             display: flex;
             flex-direction: column;
@@ -342,7 +421,21 @@
         .task-time-label { color: #6b778c; }
         .task-time-value { font-weight: 500; }
         
-        /* Predecessors in task card */
+        .crossapp-apps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        .crossapp-app-tag {
+            font-size: 9px;
+            padding: 2px 6px;
+            background: #eae6ff;
+            color: #5243aa;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
         .task-preds {
             border-top: 1px solid #e1e4e8;
             padding: 10px 14px;
@@ -407,7 +500,6 @@
         .pred-status-badge.blocked { background: #ffebe6; color: #de350b; }
         .pred-status-badge.not-started { background: #f4f5f7; color: #6b778c; }
         
-        /* Task Detail View */
         .task-detail-card {
             background: #1a1a2e;
             color: white;
@@ -447,6 +539,26 @@
         .task-detail-status.delayed { background: #ff8b00; }
         .task-detail-status.blocked { background: #de350b; }
         .task-detail-status.not-started { background: #6b778c; }
+        
+        .task-detail-metrics {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .task-detail-metric {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            flex: 1;
+        }
+        .task-detail-metric.impact { background: rgba(222,53,11,0.2); }
+        .task-detail-metric.crossapp { background: rgba(82,67,170,0.3); }
+        .task-detail-metric-value { font-size: 20px; font-weight: 700; }
+        .task-detail-metric-label { opacity: 0.8; }
+        
         .task-detail-meta {
             display: flex;
             gap: 24px;
@@ -455,13 +567,9 @@
             border-top: 1px solid rgba(255,255,255,0.15);
             font-size: 12px;
         }
-        .task-detail-meta-item { }
         .task-detail-meta-label { font-size: 9px; opacity: 0.5; text-transform: uppercase; margin-bottom: 2px; }
         
-        /* Dependency Sections */
-        .dep-section {
-            margin-bottom: 24px;
-        }
+        .dep-section { margin-bottom: 24px; }
         .dep-section-header {
             display: flex;
             align-items: center;
@@ -470,22 +578,14 @@
             padding-bottom: 8px;
             border-bottom: 2px solid #e1e4e8;
         }
-        .dep-section-icon {
-            font-size: 16px;
-            font-weight: bold;
-        }
+        .dep-section-icon { font-size: 16px; font-weight: bold; }
         .dep-section-icon.up { color: #ff8b00; }
         .dep-section-icon.down { color: #0052cc; }
         .dep-section-title { font-size: 14px; font-weight: 600; }
         .dep-section-count { font-size: 11px; color: #6b778c; margin-left: auto; }
         
-        /* Vertical Tree (Predecessors) */
-        .vtree {
-            padding-left: 0;
-        }
-        .vtree-app {
-            margin-bottom: 16px;
-        }
+        .vtree { padding-left: 0; }
+        .vtree-app { margin-bottom: 16px; }
         .vtree-app-header {
             display: flex;
             align-items: center;
@@ -496,14 +596,8 @@
             font-size: 12px;
             font-weight: 600;
         }
-        .vtree-app-header.cross {
-            background: #eae6ff;
-            color: #5243aa;
-        }
-        .vtree-app-header.same {
-            background: #deebff;
-            color: #0052cc;
-        }
+        .vtree-app-header.cross { background: #eae6ff; color: #5243aa; }
+        .vtree-app-header.same { background: #deebff; color: #0052cc; }
         .vtree-app-badge {
             font-size: 9px;
             padding: 2px 6px;
@@ -520,7 +614,6 @@
             padding-left: 20px;
             border-left: 2px solid #e1e4e8;
         }
-        
         .vtree-task {
             position: relative;
             margin-bottom: 8px;
@@ -534,7 +627,6 @@
             height: 2px;
             background: #e1e4e8;
         }
-        
         .vtree-task-card {
             display: flex;
             align-items: center;
@@ -550,17 +642,9 @@
             border-color: #0052cc;
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
-        .vtree-task-card.direct {
-            border-left: 3px solid #0052cc;
-        }
-        .vtree-task-card.indirect {
-            opacity: 0.7;
-            border-left: 3px solid #dfe1e6;
-        }
-        .vtree-task-card.indirect:hover {
-            opacity: 1;
-        }
-        
+        .vtree-task-card.direct { border-left: 3px solid #0052cc; }
+        .vtree-task-card.indirect { opacity: 0.7; border-left: 3px solid #dfe1e6; }
+        .vtree-task-card.indirect:hover { opacity: 1; }
         .vtree-task-status {
             width: 10px;
             height: 10px;
@@ -572,80 +656,26 @@
         .vtree-task-status.delayed { background: #ff8b00; }
         .vtree-task-status.blocked { background: #de350b; }
         .vtree-task-status.not-started { background: #c1c7d0; }
-        
-        .vtree-task-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .vtree-task-top {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 2px;
-        }
+        .vtree-task-info { flex: 1; min-width: 0; }
+        .vtree-task-top { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
         .vtree-task-id { font-size: 11px; font-weight: 600; color: #0052cc; }
-        .vtree-task-name {
-            font-size: 12px;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .vtree-task-bottom {
-            font-size: 10px;
-            color: #6b778c;
-        }
-        .vtree-task-type {
-            font-size: 9px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        .vtree-task-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .vtree-task-bottom { font-size: 10px; color: #6b778c; }
+        .vtree-task-type { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 600; text-transform: uppercase; }
         .vtree-task-type.direct { background: #deebff; color: #0052cc; }
         .vtree-task-type.indirect { background: #f4f5f7; color: #6b778c; }
-        .vtree-task-status-badge {
-            font-size: 9px;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        .vtree-task-status-badge { font-size: 9px; padding: 3px 8px; border-radius: 3px; font-weight: 600; text-transform: uppercase; }
         .vtree-task-status-badge.complete { background: #e3fcef; color: #006644; }
         .vtree-task-status-badge.in-progress { background: #deebff; color: #0052cc; }
         .vtree-task-status-badge.delayed { background: #fff4e5; color: #ff8b00; }
         .vtree-task-status-badge.blocked { background: #ffebe6; color: #de350b; }
         .vtree-task-status-badge.not-started { background: #f4f5f7; color: #6b778c; }
-        .vtree-task-time {
-            font-size: 10px;
-            color: #6b778c;
-            text-align: right;
-            min-width: 90px;
-        }
+        .vtree-task-time { font-size: 10px; color: #6b778c; text-align: right; min-width: 90px; }
+        .vtree-nested { margin-left: 24px; padding-left: 20px; border-left: 2px dashed #e1e4e8; margin-top: 4px; }
         
-        /* Nested indirect tasks */
-        .vtree-nested {
-            margin-left: 24px;
-            padding-left: 20px;
-            border-left: 2px dashed #e1e4e8;
-            margin-top: 4px;
-        }
-        
-        /* Horizontal Flow (Successors) */
-        .hflow {
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-        .hflow-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 0;
-        }
-        .hflow-node {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .hflow { overflow-x: auto; padding: 10px 0; }
+        .hflow-container { display: flex; align-items: flex-start; gap: 0; }
+        .hflow-node { display: flex; flex-direction: column; align-items: center; }
         .hflow-card {
             min-width: 180px;
             max-width: 220px;
@@ -656,32 +686,12 @@
             cursor: pointer;
             transition: border-color 0.15s;
         }
-        .hflow-card:hover {
-            border-color: #0052cc;
-        }
-        .hflow-card.current {
-            background: #1a1a2e;
-            color: white;
-            border-color: #1a1a2e;
-        }
-        .hflow-card.direct {
-            border-top: 3px solid #0052cc;
-        }
-        .hflow-card.indirect {
-            opacity: 0.7;
-            border-top: 3px solid #dfe1e6;
-        }
-        .hflow-card-top {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
-        .hflow-card-status {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
+        .hflow-card:hover { border-color: #0052cc; }
+        .hflow-card.current { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+        .hflow-card.direct { border-top: 3px solid #0052cc; }
+        .hflow-card.indirect { opacity: 0.7; border-top: 3px solid #dfe1e6; }
+        .hflow-card-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .hflow-card-status { width: 8px; height: 8px; border-radius: 50%; }
         .hflow-card-status.complete { background: #006644; }
         .hflow-card-status.in-progress { background: #0052cc; }
         .hflow-card-status.delayed { background: #ff8b00; }
@@ -690,53 +700,14 @@
         .hflow-card.current .hflow-card-status { border: 2px solid white; }
         .hflow-card-id { font-size: 10px; font-weight: 600; color: #0052cc; }
         .hflow-card.current .hflow-card-id { color: rgba(255,255,255,0.7); }
-        .hflow-card-name {
-            font-size: 11px;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 4px;
-        }
-        .hflow-card-app {
-            font-size: 9px;
-            color: #6b778c;
-        }
+        .hflow-card-name { font-size: 11px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+        .hflow-card-app { font-size: 9px; color: #6b778c; }
         .hflow-card.current .hflow-card-app { color: rgba(255,255,255,0.6); }
-        .hflow-card-type {
-            font-size: 8px;
-            padding: 1px 4px;
-            border-radius: 2px;
-            font-weight: 600;
-            margin-top: 6px;
-            display: inline-block;
-        }
+        .hflow-card-type { font-size: 8px; padding: 1px 4px; border-radius: 2px; font-weight: 600; margin-top: 6px; display: inline-block; }
         .hflow-card-type.direct { background: #deebff; color: #0052cc; }
         .hflow-card-type.indirect { background: #f4f5f7; color: #6b778c; }
-        
-        .hflow-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 8px;
-            color: #0052cc;
-            font-size: 20px;
-        }
-        
-        .hflow-branch {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-left: 20px;
-            padding-left: 16px;
-            border-left: 2px solid #e1e4e8;
-            margin-top: 8px;
-        }
-        .hflow-branch-arrow {
-            color: #0052cc;
-            font-size: 12px;
-            margin-bottom: 4px;
-        }
+        .hflow-arrow { display: flex; align-items: center; justify-content: center; padding: 0 8px; color: #0052cc; font-size: 20px; }
+        .hflow-branch { display: flex; flex-direction: column; gap: 8px; margin-left: 20px; padding-left: 16px; border-left: 2px solid #e1e4e8; margin-top: 8px; }
         
         .empty-deps {
             padding: 16px;
@@ -745,16 +716,6 @@
             font-size: 12px;
             background: #f9fafb;
             border-radius: 6px;
-        }
-        
-        /* Task count badge in header */
-        .task-count-badge {
-            background: #0052cc;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
         }
     </style>
 </head>
@@ -827,6 +788,12 @@
                 <input type="text" id="filterTaskId" placeholder="Enter ID">
             </div>
             <button class="btn" onclick="resetFilters()">Reset</button>
+            
+            <div class="view-toggle">
+                <button class="view-toggle-btn active" id="viewTime" onclick="setViewMode('time')">📅 Time</button>
+                <button class="view-toggle-btn" id="viewImpact" onclick="setViewMode('impact')">🎯 Impact</button>
+                <button class="view-toggle-btn" id="viewCrossApp" onclick="setViewMode('crossapp')">🔗 Cross-App</button>
+            </div>
         </div>
         
         <div class="nav-bar" id="navBar">All Tasks</div>
@@ -834,8 +801,7 @@
         <div class="main-content">
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <span>Applications</span>
-                    <span id="appCount">0</span>
+                    <span>Views</span>
                 </div>
                 <div class="sidebar-list" id="appList"></div>
             </div>
@@ -854,7 +820,8 @@
         allTasks.forEach(t => { taskLookup[t.id] = t; });
         
         let navHistory = [];
-        let currentView = { type: 'all' };  // Start with ALL tasks view
+        let currentView = { type: 'all' };
+        let viewMode = 'time';
         
         document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
         
@@ -884,6 +851,10 @@
             return d.toLocaleString('en-US', { month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' });
         }
         
+        function getActivePhaseFilter() {
+            return document.getElementById('filterPhase').value;
+        }
+        
         function getDirectPreds(taskId) {
             const task = taskLookup[taskId];
             if (!task) return [];
@@ -896,7 +867,65 @@
             return (task.successorIds || []).map(id => taskLookup[id]).filter(Boolean);
         }
         
-        // Build full upstream tree with hierarchy
+        // Count successors ONLY within the specified phase
+        function getSuccessorsInPhase(taskId, phaseFilter, visited) {
+            visited = visited || new Set();
+            if (visited.has(taskId)) return { direct: 0, total: 0 };
+            visited.add(taskId);
+            
+            const task = taskLookup[taskId];
+            if (!task) return { direct: 0, total: 0 };
+            
+            let directCount = 0;
+            let totalCount = 0;
+            
+            (task.successorIds || []).forEach(succId => {
+                const succ = taskLookup[succId];
+                if (!succ) return;
+                
+                // Only count if successor is in the same phase (or no phase filter)
+                const matchesPhase = !phaseFilter || succ.phase === phaseFilter;
+                
+                if (matchesPhase) {
+                    directCount++;
+                    totalCount++;
+                    
+                    // Recursively count indirect successors in same phase
+                    if (!visited.has(succId)) {
+                        const nested = getSuccessorsInPhase(succId, phaseFilter, new Set([...visited]));
+                        totalCount += nested.total;
+                    }
+                }
+            });
+            
+            return { direct: directCount, total: totalCount };
+        }
+        
+        // Count cross-app successors ONLY within the specified phase
+        function getCrossAppSuccessorsInPhase(taskId, phaseFilter) {
+            const task = taskLookup[taskId];
+            if (!task) return { apps: new Set(), tasks: [] };
+            
+            const apps = new Set();
+            const tasks = [];
+            
+            (task.successorIds || []).forEach(succId => {
+                const succ = taskLookup[succId];
+                if (!succ) return;
+                
+                // Only count if successor is in same phase AND different app
+                const matchesPhase = !phaseFilter || succ.phase === phaseFilter;
+                const isCrossApp = succ.app !== task.app;
+                
+                if (matchesPhase && isCrossApp) {
+                    apps.add(succ.app);
+                    tasks.push(succ);
+                }
+            });
+            
+            return { apps, tasks };
+        }
+        
         function buildUpstreamTree(taskId, visited, depth) {
             visited = visited || new Set();
             depth = depth || 0;
@@ -907,22 +936,14 @@
             if (!task) return [];
             
             const directPreds = getDirectPreds(taskId);
-            const result = [];
-            
-            directPreds.forEach(pred => {
-                const node = {
-                    task: pred,
-                    type: 'direct',
-                    depth: depth,
-                    children: buildUpstreamTree(pred.id, visited, depth + 1)
-                };
-                result.push(node);
-            });
-            
-            return result;
+            return directPreds.map(pred => ({
+                task: pred,
+                type: 'direct',
+                depth: depth,
+                children: buildUpstreamTree(pred.id, visited, depth + 1)
+            }));
         }
         
-        // Build downstream tree
         function buildDownstreamTree(taskId, visited, depth) {
             visited = visited || new Set();
             depth = depth || 0;
@@ -933,40 +954,36 @@
             if (!task) return [];
             
             const directSuccs = getDirectSuccs(taskId);
-            const result = [];
-            
-            directSuccs.forEach(succ => {
-                const node = {
-                    task: succ,
-                    type: depth === 0 ? 'direct' : 'indirect',
-                    depth: depth,
-                    children: buildDownstreamTree(succ.id, visited, depth + 1)
-                };
-                result.push(node);
-            });
-            
-            return result;
+            return directSuccs.map(succ => ({
+                task: succ,
+                type: depth === 0 ? 'direct' : 'indirect',
+                depth: depth,
+                children: buildDownstreamTree(succ.id, visited, depth + 1)
+            }));
         }
         
-        // Flatten tree for counting
         function flattenTree(tree, type) {
             let result = [];
             tree.forEach(node => {
                 result.push({ ...node.task, type: type || node.type });
-                if (node.children) {
-                    result = result.concat(flattenTree(node.children, 'indirect'));
-                }
+                if (node.children) result = result.concat(flattenTree(node.children, 'indirect'));
             });
             return result;
         }
         
         function getAppData() {
+            const phaseFilter = getActivePhaseFilter();
             const apps = {};
+            
             allTasks.forEach(t => {
+                // Filter by phase if set
+                if (phaseFilter && t.phase !== phaseFilter) return;
+                
                 if (!apps[t.app]) apps[t.app] = { name: t.app, tasks: [], statuses: {} };
                 apps[t.app].tasks.push(t);
                 apps[t.app].statuses[t.status] = (apps[t.app].statuses[t.status] || 0) + 1;
             });
+            
             return Object.values(apps).sort((a, b) => a.name.localeCompare(b.name));
         }
         
@@ -981,14 +998,20 @@
             if (phaseFilter) tasks = tasks.filter(t => t.phase === phaseFilter);
             if (statusFilter) tasks = tasks.filter(t => t.status === statusFilter);
             
-            // Sort by start time
-            tasks.sort((a, b) => {
-                const aTime = a.start ? new Date(a.start).getTime() : Infinity;
-                const bTime = b.start ? new Date(b.start).getTime() : Infinity;
-                return aTime - bTime;
-            });
-            
             return tasks;
+        }
+        
+        function setViewMode(mode) {
+            viewMode = mode;
+            document.getElementById('viewTime').classList.toggle('active', mode === 'time');
+            document.getElementById('viewImpact').classList.toggle('active', mode === 'impact');
+            document.getElementById('viewCrossApp').classList.toggle('active', mode === 'crossapp');
+            
+            if (currentView.type !== 'task') {
+                currentView = { type: 'all' };
+                document.getElementById('filterApp').value = '';
+            }
+            render();
         }
         
         function updateStats() {
@@ -1019,12 +1042,15 @@
             document.getElementById('filterTaskId').value = '';
             navHistory = [];
             currentView = { type: 'all' };
+            viewMode = 'time';
+            document.getElementById('viewTime').classList.add('active');
+            document.getElementById('viewImpact').classList.remove('active');
+            document.getElementById('viewCrossApp').classList.remove('active');
             render();
         }
         
         function updateNavBar() {
             let navHtml = '';
-            const appFilter = document.getElementById('filterApp').value;
             const phaseFilter = document.getElementById('filterPhase').value;
             const statusFilter = document.getElementById('filterStatus').value;
             
@@ -1033,17 +1059,17 @@
             } else if (currentView.type === 'app') {
                 navHtml = currentView.app;
             } else {
-                navHtml = 'All Tasks';
-                
-                // Show active filters as badges
-                let badges = [];
-                if (phaseFilter) badges.push('<span class="nav-filter-badge">' + phaseFilter + '</span>');
-                if (statusFilter) badges.push('<span class="nav-filter-badge">' + statusFilter + '</span>');
-                if (appFilter) badges.push('<span class="nav-filter-badge">' + appFilter + '</span>');
-                
-                if (badges.length > 0) {
-                    navHtml += ' ' + badges.join(' ');
-                }
+                if (viewMode === 'impact') navHtml = '🎯 By Impact';
+                else if (viewMode === 'crossapp') navHtml = '🔗 Cross-App Dependencies';
+                else navHtml = '📅 All Tasks';
+            }
+            
+            // Add phase badge
+            if (phaseFilter) {
+                navHtml += ' <span class="nav-filter-badge phase">' + phaseFilter + '</span>';
+            }
+            if (statusFilter) {
+                navHtml += ' <span class="nav-filter-badge">' + statusFilter + '</span>';
             }
             
             document.getElementById('navBar').innerHTML = navHtml;
@@ -1051,39 +1077,41 @@
         
         function render() {
             document.getElementById('btnBack').disabled = navHistory.length === 0;
-            
             updateNavBar();
             updateStats();
             renderAppList();
             
-            if (currentView.type === 'task') {
-                renderTaskDetail(taskLookup[currentView.taskId]);
-            } else if (currentView.type === 'app') {
-                renderAppDetail(currentView.app);
-            } else {
-                renderAllTasks();
-            }
+            if (currentView.type === 'task') renderTaskDetail(taskLookup[currentView.taskId]);
+            else if (currentView.type === 'app') renderAppDetail(currentView.app);
+            else if (viewMode === 'impact') renderImpactView();
+            else if (viewMode === 'crossapp') renderCrossAppView();
+            else renderAllTasks();
         }
         
         function renderAppList() {
             const container = document.getElementById('appList');
             let apps = getAppData();
             const appFilter = document.getElementById('filterApp').value;
+            const phaseFilter = getActivePhaseFilter();
             
-            // "All Tasks" button at top
             const isAllSelected = currentView.type === 'all' && !appFilter;
             
             let html = `
-                <div class="all-tasks-btn ${isAllSelected ? 'selected' : ''}" onclick="showAllTasks()">
-                    📋 All Tasks (${allTasks.length})
+                <div class="sidebar-nav-btn time ${isAllSelected && viewMode === 'time' ? 'selected' : ''}" onclick="showView('time')">
+                    📅 By Time
+                </div>
+                <div class="sidebar-nav-btn impact ${isAllSelected && viewMode === 'impact' ? 'selected' : ''}" onclick="showView('impact')">
+                    🎯 By Impact
+                </div>
+                <div class="sidebar-nav-btn crossapp ${isAllSelected && viewMode === 'crossapp' ? 'selected' : ''}" onclick="showView('crossapp')">
+                    🔗 Cross-App
                 </div>
             `;
             
-            document.getElementById('appCount').textContent = apps.length;
+            html += '<div class="sidebar-header" style="margin-top: 10px; padding: 8px 0; border: none; border-top: 1px solid #e1e4e8;"><span>Applications</span><span>' + apps.length + '</span></div>';
             
             html += apps.map(app => {
-                const isSelected = (currentView.type === 'app' && currentView.app === app.name) || 
-                                   (appFilter === app.name);
+                const isSelected = (currentView.type === 'app' && currentView.app === app.name) || (appFilter === app.name);
                 const stats = ['Blocked', 'Delayed', 'In Progress', 'Complete'].filter(s => app.statuses[s]).map(s =>
                     `<span class="mini-stat ${getStatusClass(s)}">${app.statuses[s]}</span>`
                 ).join('');
@@ -1091,7 +1119,7 @@
                 return `
                     <div class="app-card ${isSelected ? 'selected' : ''}" onclick="selectApp('${app.name}')">
                         <div class="app-card-name">${app.name}</div>
-                        <div class="app-card-meta">${app.tasks.length} tasks</div>
+                        <div class="app-card-meta">${app.tasks.length} tasks${phaseFilter ? ' in ' + phaseFilter : ''}</div>
                         <div class="app-card-stats">${stats}</div>
                     </div>
                 `;
@@ -1100,10 +1128,14 @@
             container.innerHTML = html;
         }
         
-        function showAllTasks() {
+        function showView(mode) {
             document.getElementById('filterApp').value = '';
             navHistory = [];
             currentView = { type: 'all' };
+            viewMode = mode;
+            document.getElementById('viewTime').classList.toggle('active', mode === 'time');
+            document.getElementById('viewImpact').classList.toggle('active', mode === 'impact');
+            document.getElementById('viewCrossApp').classList.toggle('active', mode === 'crossapp');
             render();
         }
         
@@ -1118,13 +1150,210 @@
             navigateTo({ type: 'task', taskId, app: task.app });
         }
         
-        function renderAllTasks() {
-            const tasks = getFilteredTasks();
+        function renderTaskCard(task, options) {
+            options = options || {};
+            const showApp = options.showApp !== false;
+            const showImpact = options.showImpact || false;
+            const showCrossApp = options.showCrossApp || false;
+            const showTime = options.showTime !== false && !showImpact && !showCrossApp;
             
-            if (tasks.length === 0) {
-                document.getElementById('detailBody').innerHTML = '<div class="empty-deps">No tasks match the current filters</div>';
-                return;
+            const phaseFilter = getActivePhaseFilter();
+            
+            const statusClass = getStatusClass(task.status);
+            const phaseClass = getPhaseClass(task.phase);
+            const preds = getDirectPreds(task.id);
+            
+            // Get phase-filtered counts
+            const succCounts = getSuccessorsInPhase(task.id, phaseFilter);
+            const crossAppData = getCrossAppSuccessorsInPhase(task.id, phaseFilter);
+            
+            const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
+            preds.sort((a, b) => (statusPriority[a.status] ?? 5) - (statusPriority[b.status] ?? 5));
+            
+            let predsHtml = '';
+            if (preds.length > 0) {
+                predsHtml = `
+                    <div class="task-preds">
+                        <div class="task-preds-header">Waiting On (${preds.length} direct)</div>
+                        ${preds.map(p => `
+                            <div class="pred-item" onclick="event.stopPropagation(); selectTask('${p.id}')">
+                                <div class="pred-status ${getStatusClass(p.status)}"></div>
+                                <span class="pred-id">#${p.id}</span>
+                                <span class="pred-name">${p.name}</span>
+                                <span class="pred-app ${p.app !== task.app ? 'cross' : 'same'}">${p.app}${p.app !== task.app ? ' [Cross-App]' : ''}</span>
+                                <span class="pred-status-badge ${getStatusClass(p.status)}">${p.status}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
             }
+            
+            // Cross-app display
+            let crossAppHtml = '';
+            if (showCrossApp && crossAppData.apps.size > 0) {
+                crossAppHtml = `
+                    <div class="task-preds" style="border-top: 1px solid #e1e4e8; background: #eae6ff;">
+                        <div class="task-preds-header" style="color: #5243aa;">Blocks ${crossAppData.apps.size} App(s)${phaseFilter ? ' in ' + phaseFilter : ''}</div>
+                        <div class="crossapp-apps">
+                            ${[...crossAppData.apps].map(app => `<span class="crossapp-app-tag">${app}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            return `
+                <div class="task-card">
+                    <div class="task-card-main" onclick="selectTask('${task.id}')">
+                        <div class="task-phase-bar ${phaseClass}"></div>
+                        <div class="task-status-col ${statusClass}">${task.status}</div>
+                        <div class="task-info">
+                            <div class="task-info-top">
+                                <span class="task-id">#${task.id}</span>
+                                <span class="task-name">${task.name}</span>
+                                ${showApp ? `<span class="task-app-badge">${task.app}</span>` : ''}
+                            </div>
+                            <div class="task-info-bottom">${task.owner ? task.owner.split('@')[0] : 'Unassigned'}</div>
+                        </div>
+                        ${showImpact ? `
+                            <div class="task-metrics">
+                                <div class="task-metrics-value">${succCounts.direct + succCounts.total - succCounts.direct}</div>
+                                <div class="task-metrics-label">Total Deps</div>
+                                <div class="task-metrics-breakdown">${succCounts.direct} direct</div>
+                            </div>
+                        ` : ''}
+                        ${showCrossApp ? `
+                            <div class="task-metrics">
+                                <div class="task-metrics-value" style="color: #5243aa;">${crossAppData.apps.size}</div>
+                                <div class="task-metrics-label">Apps</div>
+                                <div class="task-metrics-breakdown">${crossAppData.tasks.length} tasks</div>
+                            </div>
+                        ` : ''}
+                        ${showTime ? `
+                            <div class="task-times">
+                                <div class="task-time-row">
+                                    <span class="task-time-label">Start</span>
+                                    <span class="task-time-value">${formatShortTime(task.start)}</span>
+                                </div>
+                                <div class="task-time-row">
+                                    <span class="task-time-label">End</span>
+                                    <span class="task-time-value">${formatShortTime(task.end)}</span>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                    ${predsHtml}
+                    ${crossAppHtml}
+                </div>
+            `;
+        }
+        
+        function renderImpactView() {
+            const phaseFilter = getActivePhaseFilter();
+            let tasks = getFilteredTasks();
+            
+            // Calculate phase-filtered impact for each task
+            tasks = tasks.map(t => {
+                const succCounts = getSuccessorsInPhase(t.id, phaseFilter);
+                return {
+                    ...t,
+                    directSuccCount: succCounts.direct,
+                    totalSuccCount: succCounts.total
+                };
+            });
+            
+            // Filter out complete and sort by TOTAL (direct + indirect)
+            tasks = tasks.filter(t => t.status !== 'Complete');
+            tasks.sort((a, b) => b.totalSuccCount - a.totalSuccCount || b.directSuccCount - a.directSuccCount);
+            
+            // Stats
+            const withDeps = tasks.filter(t => t.totalSuccCount > 0);
+            const maxDeps = tasks.length > 0 ? tasks[0].totalSuccCount : 0;
+            
+            let phaseNotice = '';
+            if (phaseFilter) {
+                phaseNotice = `
+                    <div class="phase-notice">
+                        ⚠️ <strong>Filtered by ${phaseFilter}</strong> — Only counting dependencies within ${phaseFilter} phase
+                    </div>
+                `;
+            }
+            
+            const tasksHtml = tasks.map(t => renderTaskCard(t, { showApp: true, showImpact: true })).join('');
+            
+            document.getElementById('detailBody').innerHTML = `
+                ${phaseNotice}
+                <div class="app-header">
+                    <div class="app-header-info">
+                        <div class="app-header-name">🎯 By Impact${phaseFilter ? ' (' + phaseFilter + ')' : ''}</div>
+                        <div class="app-header-meta">${tasks.length} tasks sorted by total downstream dependencies</div>
+                    </div>
+                    <div class="app-header-stats">
+                        <div class="app-stat"><div class="app-stat-value red">${withDeps.length}</div><div class="app-stat-label">With Deps</div></div>
+                        <div class="app-stat"><div class="app-stat-value blue">${tasks.length - withDeps.length}</div><div class="app-stat-label">No Deps</div></div>
+                        <div class="app-stat"><div class="app-stat-value orange">${maxDeps}</div><div class="app-stat-label">Max Deps</div></div>
+                    </div>
+                </div>
+                ${tasksHtml || '<div class="empty-deps">No tasks match filters</div>'}
+            `;
+        }
+        
+        function renderCrossAppView() {
+            const phaseFilter = getActivePhaseFilter();
+            let tasks = getFilteredTasks();
+            
+            // Calculate phase-filtered cross-app counts
+            tasks = tasks.map(t => {
+                const crossAppData = getCrossAppSuccessorsInPhase(t.id, phaseFilter);
+                return {
+                    ...t,
+                    crossAppCount: crossAppData.apps.size,
+                    crossAppTasks: crossAppData.tasks,
+                    crossApps: [...crossAppData.apps]
+                };
+            });
+            
+            // Filter to only tasks with cross-app successors and not complete
+            const withCrossApp = tasks.filter(t => t.crossAppCount > 0 && t.status !== 'Complete');
+            withCrossApp.sort((a, b) => b.crossAppCount - a.crossAppCount);
+            
+            const uniqueAppsAffected = new Set();
+            withCrossApp.forEach(t => t.crossApps.forEach(a => uniqueAppsAffected.add(a)));
+            
+            let phaseNotice = '';
+            if (phaseFilter) {
+                phaseNotice = `
+                    <div class="phase-notice">
+                        ⚠️ <strong>Filtered by ${phaseFilter}</strong> — Only counting cross-app dependencies within ${phaseFilter} phase
+                    </div>
+                `;
+            }
+            
+            const tasksHtml = withCrossApp.map(t => renderTaskCard(t, { showApp: true, showCrossApp: true })).join('');
+            
+            document.getElementById('detailBody').innerHTML = `
+                ${phaseNotice}
+                <div class="app-header">
+                    <div class="app-header-info">
+                        <div class="app-header-name">🔗 Cross-App Dependencies${phaseFilter ? ' (' + phaseFilter + ')' : ''}</div>
+                        <div class="app-header-meta">Tasks that block other applications (excluding completed)</div>
+                    </div>
+                    <div class="app-header-stats">
+                        <div class="app-stat"><div class="app-stat-value purple">${withCrossApp.length}</div><div class="app-stat-label">Tasks</div></div>
+                        <div class="app-stat"><div class="app-stat-value purple">${uniqueAppsAffected.size}</div><div class="app-stat-label">Apps Affected</div></div>
+                    </div>
+                </div>
+                ${tasksHtml || '<div class="empty-deps">No cross-app dependencies found' + (phaseFilter ? ' in ' + phaseFilter + ' phase' : '') + '</div>'}
+            `;
+        }
+        
+        function renderAllTasks() {
+            let tasks = getFilteredTasks();
+            
+            tasks.sort((a, b) => {
+                const aTime = a.start ? new Date(a.start).getTime() : Infinity;
+                const bTime = b.start ? new Date(b.start).getTime() : Infinity;
+                return aTime - bTime;
+            });
             
             const phaseFilter = document.getElementById('filterPhase').value;
             const statusFilter = document.getElementById('filterStatus').value;
@@ -1140,67 +1369,13 @@
                 blocked: tasks.filter(t => t.status === 'Blocked').length
             };
             
-            const tasksHtml = tasks.map(task => {
-                const statusClass = getStatusClass(task.status);
-                const phaseClass = getPhaseClass(task.phase);
-                const preds = getDirectPreds(task.id);
-                
-                // Sort preds by status
-                const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
-                preds.sort((a, b) => (statusPriority[a.status] ?? 5) - (statusPriority[b.status] ?? 5));
-                
-                let predsHtml = '';
-                if (preds.length > 0) {
-                    predsHtml = `
-                        <div class="task-preds">
-                            <div class="task-preds-header">Waiting On (${preds.length} direct)</div>
-                            ${preds.map(p => `
-                                <div class="pred-item" onclick="event.stopPropagation(); selectTask('${p.id}')">
-                                    <div class="pred-status ${getStatusClass(p.status)}"></div>
-                                    <span class="pred-id">#${p.id}</span>
-                                    <span class="pred-name">${p.name}</span>
-                                    <span class="pred-app ${p.app !== task.app ? 'cross' : 'same'}">${p.app}${p.app !== task.app ? ' [Cross-App]' : ''}</span>
-                                    <span class="pred-status-badge ${getStatusClass(p.status)}">${p.status}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
-                return `
-                    <div class="task-card">
-                        <div class="task-card-main" onclick="selectTask('${task.id}')">
-                            <div class="task-phase-bar ${phaseClass}"></div>
-                            <div class="task-status-col ${statusClass}">${task.status}</div>
-                            <div class="task-info">
-                                <div class="task-info-top">
-                                    <span class="task-id">#${task.id}</span>
-                                    <span class="task-name">${task.name}</span>
-                                    <span class="task-app-badge">${task.app}</span>
-                                </div>
-                                <div class="task-info-bottom">${task.owner ? task.owner.split('@')[0] : 'Unassigned'}</div>
-                            </div>
-                            <div class="task-times">
-                                <div class="task-time-row">
-                                    <span class="task-time-label">Start</span>
-                                    <span class="task-time-value">${formatShortTime(task.start)}</span>
-                                </div>
-                                <div class="task-time-row">
-                                    <span class="task-time-label">End</span>
-                                    <span class="task-time-value">${formatShortTime(task.end)}</span>
-                                </div>
-                            </div>
-                        </div>
-                        ${predsHtml}
-                    </div>
-                `;
-            }).join('');
+            const tasksHtml = tasks.map(t => renderTaskCard(t, { showApp: true, showTime: true })).join('');
             
             document.getElementById('detailBody').innerHTML = `
                 <div class="app-header">
                     <div class="app-header-info">
                         <div class="app-header-name">${headerTitle}</div>
-                        <div class="app-header-meta">${tasks.length} tasks</div>
+                        <div class="app-header-meta">${tasks.length} tasks sorted by start time</div>
                     </div>
                     <div class="app-header-stats">
                         <div class="app-stat"><div class="app-stat-value green">${statusCounts.complete}</div><div class="app-stat-label">Complete</div></div>
@@ -1209,108 +1384,89 @@
                         <div class="app-stat"><div class="app-stat-value red">${statusCounts.blocked}</div><div class="app-stat-label">Blocked</div></div>
                     </div>
                 </div>
-                ${tasksHtml}
+                ${tasksHtml || '<div class="empty-deps">No tasks match filters</div>'}
             `;
         }
         
         function renderAppDetail(appName) {
-            const apps = getAppData();
-            const app = apps.find(a => a.name === appName);
-            if (!app) return;
-            
-            const phaseFilter = document.getElementById('filterPhase').value;
+            const phaseFilter = getActivePhaseFilter();
             const statusFilter = document.getElementById('filterStatus').value;
             
-            let tasks = [...app.tasks];
+            let tasks = allTasks.filter(t => t.app === appName);
             if (phaseFilter) tasks = tasks.filter(t => t.phase === phaseFilter);
             if (statusFilter) tasks = tasks.filter(t => t.status === statusFilter);
             
-            // Sort by start time
-            tasks.sort((a, b) => {
-                const aTime = a.start ? new Date(a.start).getTime() : Infinity;
-                const bTime = b.start ? new Date(b.start).getTime() : Infinity;
-                return aTime - bTime;
-            });
+            const allAppTasks = allTasks.filter(t => t.app === appName && (!phaseFilter || t.phase === phaseFilter));
+            const statuses = {};
+            allAppTasks.forEach(t => { statuses[t.status] = (statuses[t.status] || 0) + 1; });
             
-            const tasksHtml = tasks.map(task => {
-                const statusClass = getStatusClass(task.status);
-                const phaseClass = getPhaseClass(task.phase);
-                const preds = getDirectPreds(task.id);
-                
-                // Sort preds by status
-                const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
-                preds.sort((a, b) => (statusPriority[a.status] ?? 5) - (statusPriority[b.status] ?? 5));
-                
-                let predsHtml = '';
-                if (preds.length > 0) {
-                    predsHtml = `
-                        <div class="task-preds">
-                            <div class="task-preds-header">Waiting On (${preds.length} direct)</div>
-                            ${preds.map(p => `
-                                <div class="pred-item" onclick="event.stopPropagation(); selectTask('${p.id}')">
-                                    <div class="pred-status ${getStatusClass(p.status)}"></div>
-                                    <span class="pred-id">#${p.id}</span>
-                                    <span class="pred-name">${p.name}</span>
-                                    <span class="pred-app ${p.app !== appName ? 'cross' : 'same'}">${p.app}${p.app !== appName ? ' [Cross-App]' : ''}</span>
-                                    <span class="pred-status-badge ${getStatusClass(p.status)}">${p.status}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-                
-                return `
-                    <div class="task-card">
-                        <div class="task-card-main" onclick="selectTask('${task.id}')">
-                            <div class="task-phase-bar ${phaseClass}"></div>
-                            <div class="task-status-col ${statusClass}">${task.status}</div>
-                            <div class="task-info">
-                                <div class="task-info-top">
-                                    <span class="task-id">#${task.id}</span>
-                                    <span class="task-name">${task.name}</span>
-                                </div>
-                                <div class="task-info-bottom">${task.owner ? task.owner.split('@')[0] : 'Unassigned'}</div>
-                            </div>
-                            <div class="task-times">
-                                <div class="task-time-row">
-                                    <span class="task-time-label">Start</span>
-                                    <span class="task-time-value">${formatShortTime(task.start)}</span>
-                                </div>
-                                <div class="task-time-row">
-                                    <span class="task-time-label">End</span>
-                                    <span class="task-time-value">${formatShortTime(task.end)}</span>
-                                </div>
-                            </div>
-                        </div>
-                        ${predsHtml}
+            // Sort based on view mode
+            if (viewMode === 'impact') {
+                tasks = tasks.map(t => {
+                    const succCounts = getSuccessorsInPhase(t.id, phaseFilter);
+                    return { ...t, totalSuccCount: succCounts.total, directSuccCount: succCounts.direct };
+                });
+                tasks.sort((a, b) => b.totalSuccCount - a.totalSuccCount);
+            } else if (viewMode === 'crossapp') {
+                tasks = tasks.map(t => {
+                    const crossAppData = getCrossAppSuccessorsInPhase(t.id, phaseFilter);
+                    return { ...t, crossAppCount: crossAppData.apps.size };
+                });
+                tasks.sort((a, b) => b.crossAppCount - a.crossAppCount);
+            } else {
+                tasks.sort((a, b) => {
+                    const aTime = a.start ? new Date(a.start).getTime() : Infinity;
+                    const bTime = b.start ? new Date(b.start).getTime() : Infinity;
+                    return aTime - bTime;
+                });
+            }
+            
+            const options = {
+                showApp: false,
+                showImpact: viewMode === 'impact',
+                showCrossApp: viewMode === 'crossapp',
+                showTime: viewMode === 'time'
+            };
+            
+            let phaseNotice = '';
+            if (phaseFilter && (viewMode === 'impact' || viewMode === 'crossapp')) {
+                phaseNotice = `
+                    <div class="phase-notice">
+                        ⚠️ <strong>Filtered by ${phaseFilter}</strong> — Dependencies counted within ${phaseFilter} phase only
                     </div>
                 `;
-            }).join('') || '<div class="empty-deps">No tasks match filters</div>';
+            }
+            
+            const tasksHtml = tasks.map(t => renderTaskCard(t, options)).join('');
             
             document.getElementById('detailBody').innerHTML = `
+                ${phaseNotice}
                 <div class="app-header">
                     <div class="app-header-info">
                         <div class="app-header-name">${appName}</div>
-                        <div class="app-header-meta">${tasks.length} of ${app.tasks.length} tasks</div>
+                        <div class="app-header-meta">${tasks.length} of ${allAppTasks.length} tasks${phaseFilter ? ' in ' + phaseFilter : ''}</div>
                     </div>
                     <div class="app-header-stats">
-                        <div class="app-stat"><div class="app-stat-value green">${app.statuses['Complete'] || 0}</div><div class="app-stat-label">Complete</div></div>
-                        <div class="app-stat"><div class="app-stat-value blue">${app.statuses['In Progress'] || 0}</div><div class="app-stat-label">In Progress</div></div>
-                        <div class="app-stat"><div class="app-stat-value orange">${app.statuses['Delayed'] || 0}</div><div class="app-stat-label">Delayed</div></div>
-                        <div class="app-stat"><div class="app-stat-value red">${app.statuses['Blocked'] || 0}</div><div class="app-stat-label">Blocked</div></div>
+                        <div class="app-stat"><div class="app-stat-value green">${statuses['Complete'] || 0}</div><div class="app-stat-label">Complete</div></div>
+                        <div class="app-stat"><div class="app-stat-value blue">${statuses['In Progress'] || 0}</div><div class="app-stat-label">In Progress</div></div>
+                        <div class="app-stat"><div class="app-stat-value orange">${statuses['Delayed'] || 0}</div><div class="app-stat-label">Delayed</div></div>
+                        <div class="app-stat"><div class="app-stat-value red">${statuses['Blocked'] || 0}</div><div class="app-stat-label">Blocked</div></div>
                     </div>
                 </div>
-                ${tasksHtml}
+                ${tasksHtml || '<div class="empty-deps">No tasks match filters</div>'}
             `;
         }
         
         function renderTaskDetail(task) {
             if (!task) return;
             
+            const phaseFilter = getActivePhaseFilter();
             const statusClass = getStatusClass(task.status);
             const phaseClass = getPhaseClass(task.phase);
             
-            // Build trees
+            const succCounts = getSuccessorsInPhase(task.id, phaseFilter);
+            const crossAppData = getCrossAppSuccessorsInPhase(task.id, phaseFilter);
+            
             const upstreamTree = buildUpstreamTree(task.id);
             const downstreamTree = buildDownstreamTree(task.id);
             
@@ -1322,26 +1478,18 @@
             
             // Group upstream by app
             const upstreamByApp = {};
-            function addToAppGroup(node, group, currentApp) {
-                const appName = node.task.app;
-                if (!group[appName]) group[appName] = { isCross: appName !== currentApp, tasks: [] };
-                group[appName].tasks.push(node);
-            }
-            
             function processUpstreamTree(tree, group, currentApp) {
                 tree.forEach(node => {
-                    addToAppGroup(node, group, currentApp);
-                    if (node.children && node.children.length > 0) {
-                        processUpstreamTree(node.children, group, currentApp);
-                    }
+                    const appName = node.task.app;
+                    if (!group[appName]) group[appName] = { isCross: appName !== currentApp, tasks: [] };
+                    group[appName].tasks.push(node);
+                    if (node.children && node.children.length > 0) processUpstreamTree(node.children, group, currentApp);
                 });
             }
             processUpstreamTree(upstreamTree, upstreamByApp, task.app);
             
-            // Render vertical tree
-            function renderVTree(tree, currentApp, isNested) {
+            function renderVTree(tree, currentApp) {
                 if (!tree || tree.length === 0) return '';
-                
                 const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
                 tree.sort((a, b) => (statusPriority[a.task.status] ?? 5) - (statusPriority[b.task.status] ?? 5));
                 
@@ -1365,30 +1513,21 @@
                                 <span class="vtree-task-status-badge ${getStatusClass(t.status)}">${t.status}</span>
                                 <div class="vtree-task-time">${formatShortTime(t.start)}</div>
                             </div>
-                            ${hasChildren ? `<div class="vtree-nested">${renderVTree(node.children, currentApp, true)}</div>` : ''}
+                            ${hasChildren ? `<div class="vtree-nested">${renderVTree(node.children, currentApp)}</div>` : ''}
                         </div>
                     `;
                 }).join('');
             }
             
-            // Upstream HTML grouped by app
             let upstreamHtml = '';
             if (Object.keys(upstreamByApp).length === 0) {
                 upstreamHtml = '<div class="empty-deps">No predecessors - this task can start independently</div>';
             } else {
-                // Cross-app first, then same app
                 const crossApps = Object.entries(upstreamByApp).filter(([_, v]) => v.isCross);
                 const sameApps = Object.entries(upstreamByApp).filter(([_, v]) => !v.isCross);
                 
                 [...crossApps, ...sameApps].forEach(([appName, data]) => {
-                    // Filter tree to only show tasks from this app
-                    const filterTreeByApp = (tree, app) => {
-                        return tree.filter(node => node.task.app === app).map(node => ({
-                            ...node,
-                            children: node.children ? filterTreeByApp(node.children, app) : []
-                        }));
-                    };
-                    
+                    const filterTreeByApp = (tree, app) => tree.filter(n => n.task.app === app).map(n => ({ ...n, children: n.children ? filterTreeByApp(n.children, app) : [] }));
                     const filteredTree = filterTreeByApp(upstreamTree, appName);
                     
                     upstreamHtml += `
@@ -1397,24 +1536,18 @@
                                 ${appName}
                                 <span class="vtree-app-badge ${data.isCross ? 'cross' : 'same'}">${data.isCross ? 'Cross-App' : 'Same App'}</span>
                             </div>
-                            <div class="vtree-tasks">
-                                ${renderVTree(filteredTree, task.app, false)}
-                            </div>
+                            <div class="vtree-tasks">${renderVTree(filteredTree, task.app)}</div>
                         </div>
                     `;
                 });
             }
             
-            // Downstream horizontal flow
             function renderHFlow(tree, currentTask) {
                 if (!tree || tree.length === 0) return '<div class="empty-deps">No successors - no tasks waiting on this</div>';
-                
                 const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
                 tree.sort((a, b) => (statusPriority[a.task.status] ?? 5) - (statusPriority[b.task.status] ?? 5));
                 
                 let html = '<div class="hflow"><div class="hflow-container">';
-                
-                // Current task
                 html += `
                     <div class="hflow-node">
                         <div class="hflow-card current">
@@ -1428,12 +1561,9 @@
                     </div>
                 `;
                 
-                // First level successors
                 if (tree.length > 0) {
-                    html += '<div class="hflow-arrow">→</div>';
-                    html += '<div class="hflow-node">';
-                    
-                    tree.forEach((node, idx) => {
+                    html += '<div class="hflow-arrow">→</div><div class="hflow-node">';
+                    tree.forEach(node => {
                         const t = node.task;
                         const type = node.depth === 0 ? 'direct' : 'indirect';
                         const isCross = t.app !== currentTask.app;
@@ -1450,12 +1580,10 @@
                             </div>
                         `;
                         
-                        // Show children as branches
                         if (node.children && node.children.length > 0) {
                             html += '<div class="hflow-branch">';
                             node.children.forEach(child => {
                                 const ct = child.task;
-                                const cIsCross = ct.app !== currentTask.app;
                                 html += `
                                     <div class="hflow-card indirect" onclick="selectTask('${ct.id}')">
                                         <div class="hflow-card-top">
@@ -1463,7 +1591,7 @@
                                             <span class="hflow-card-id">#${ct.id}</span>
                                         </div>
                                         <div class="hflow-card-name">${ct.name}</div>
-                                        <div class="hflow-card-app">${ct.app}${cIsCross ? ' [Cross-App]' : ''}</div>
+                                        <div class="hflow-card-app">${ct.app}${ct.app !== currentTask.app ? ' [Cross-App]' : ''}</div>
                                         <span class="hflow-card-type indirect">indirect</span>
                                     </div>
                                 `;
@@ -1471,17 +1599,25 @@
                             html += '</div>';
                         }
                     });
-                    
                     html += '</div>';
                 }
-                
                 html += '</div></div>';
                 return html;
             }
             
             const downstreamHtml = renderHFlow(downstreamTree, task);
             
+            let phaseNotice = '';
+            if (phaseFilter) {
+                phaseNotice = `
+                    <div class="phase-notice">
+                        ⚠️ <strong>Impact filtered by ${phaseFilter}</strong> — Showing ${succCounts.total} dependencies in this phase
+                    </div>
+                `;
+            }
+            
             document.getElementById('detailBody').innerHTML = `
+                ${phaseNotice}
                 <div class="task-detail-card">
                     <div class="task-detail-top">
                         <div>
@@ -1491,6 +1627,16 @@
                             <div class="task-detail-phase ${phaseClass}">${task.phase}</div>
                         </div>
                         <div class="task-detail-status ${statusClass}">${task.status}</div>
+                    </div>
+                    <div class="task-detail-metrics">
+                        <div class="task-detail-metric impact">
+                            <span class="task-detail-metric-value">${succCounts.total}</span>
+                            <span class="task-detail-metric-label">total dependencies (${succCounts.direct} direct)${phaseFilter ? ' in ' + phaseFilter : ''}</span>
+                        </div>
+                        <div class="task-detail-metric crossapp">
+                            <span class="task-detail-metric-value">${crossAppData.apps.size}</span>
+                            <span class="task-detail-metric-label">apps depend on this${crossAppData.apps.size > 0 ? ': ' + [...crossAppData.apps].join(', ') : ''}</span>
+                        </div>
                     </div>
                     <div class="task-detail-meta">
                         <div><div class="task-detail-meta-label">Owner</div><div>${task.owner ? task.owner.split('@')[0] : 'Unassigned'}</div></div>
@@ -1506,9 +1652,7 @@
                         <span class="dep-section-title">Predecessors (Waiting On)</span>
                         <span class="dep-section-count">${directUp} direct, ${allUpstream.length} total</span>
                     </div>
-                    <div class="vtree">
-                        ${upstreamHtml}
-                    </div>
+                    <div class="vtree">${upstreamHtml}</div>
                 </div>
                 
                 <div class="dep-section">
@@ -1522,28 +1666,16 @@
             `;
         }
         
-        // Event listeners
         ['filterApp', 'filterPhase', 'filterStatus'].forEach(id => {
             document.getElementById(id).addEventListener('change', function() {
-                if (id === 'filterApp' && this.value) {
-                    navigateTo({ type: 'app', app: this.value });
-                } else if (id === 'filterApp' && !this.value) {
-                    // Cleared app filter - go back to all tasks
-                    navHistory = [];
-                    currentView = { type: 'all' };
-                    render();
-                } else {
-                    // Phase or Status filter changed - stay on current view but refresh
-                    render();
-                }
+                if (id === 'filterApp' && this.value) navigateTo({ type: 'app', app: this.value });
+                else if (id === 'filterApp' && !this.value) { navHistory = []; currentView = { type: 'all' }; render(); }
+                else render();
             });
         });
         
         document.getElementById('filterTaskId').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const id = this.value.trim();
-                if (taskLookup[id]) selectTask(id);
-            }
+            if (e.key === 'Enter') { const id = this.value.trim(); if (taskLookup[id]) selectTask(id); }
         });
         
         updateStats();
