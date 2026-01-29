@@ -117,6 +117,14 @@
             font-size: 13px;
             font-weight: 600;
         }
+        .nav-filter-badge {
+            background: #0052cc;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 500;
+        }
         
         /* Main */
         .main-content {
@@ -177,6 +185,22 @@
         .mini-stat.delayed { background: #fff4e5; color: #ff8b00; }
         .mini-stat.blocked { background: #ffebe6; color: #de350b; }
         .mini-stat.not-started { background: #f4f5f7; color: #6b778c; }
+        
+        /* All Tasks Button */
+        .all-tasks-btn {
+            padding: 10px 12px;
+            border: 2px solid #0052cc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            background: #e6f0ff;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            color: #0052cc;
+        }
+        .all-tasks-btn:hover { background: #deebff; }
+        .all-tasks-btn.selected { background: #0052cc; color: white; }
         
         /* Detail Panel */
         .detail-panel {
@@ -286,6 +310,14 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        .task-app-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+            background: #eae6ff;
+            color: #5243aa;
+            border-radius: 3px;
+            font-weight: 500;
         }
         .task-info-bottom {
             font-size: 10px;
@@ -714,6 +746,16 @@
             background: #f9fafb;
             border-radius: 6px;
         }
+        
+        /* Task count badge in header */
+        .task-count-badge {
+            background: #0052cc;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -758,7 +800,7 @@
             <div class="control-group">
                 <label>Application</label>
                 <select id="filterApp">
-                    <option value="">All</option>
+                    <option value="">All Applications</option>
                     <option value="34S-CPM">34S-CPM</option><option value="3GIS">3GIS</option><option value="ASAP">ASAP</option><option value="AUTOMATE">AUTOMATE</option><option value="AVATAX">AVATAX</option><option value="AccelQ">AccelQ</option><option value="Accounting">Accounting</option><option value="Adobe Experience Manager (AEM)">Adobe Experience Manager (AEM)</option><option value="All Sales + Rev">All Sales + Rev</option><option value="Apigee">Apigee</option><option value="Asset Accounting">Asset Accounting</option><option value="BMCM">BMCM</option><option value="BMCO">BMCO</option><option value="BMOC">BMOC</option><option value="BMOM">BMOM</option><option value="BMSC">BMSC</option><option value="BRAIN">BRAIN</option><option value="BRIM">BRIM</option><option value="BRIM/MDM/DH">BRIM/MDM/DH</option><option value="Bidmaster-Fireworks">Bidmaster-Fireworks</option><option value="Bitly">Bitly</option><option value="CAGBI">CAGBI</option><option value="CATT">CATT</option><option value="CDW-CODS">CDW-CODS</option><option value="CFS">CFS</option><option value="CIPS">CIPS</option><option value="CSC-SSC">CSC-SSC</option><option value="CTL-BILL-GENAI-API-COMP">CTL-BILL-GENAI-API-COMP</option><option value="Callminer">Callminer</option><option value="Cash Accounting">Cash Accounting</option><option value="Cash Payments">Cash Payments</option><option value="Consumer Segment DB Market (CSDM)">Consumer Segment DB Market (CSDM)</option><option value="Contact Engine">Contact Engine</option><option value="DCEP-CONSUMER">DCEP-CONSUMER</option><option value="DSS">DSS</option><option value="Data Cutover">Data Cutover</option><option value="Data Operations">Data Operations</option><option value="Dispatch - SFS & SFSTech">Dispatch - SFS & SFSTech</option><option value="Dispatch - SFSIP">Dispatch - SFSIP</option><option value="ENC-ENSEMBLE-CSM">ENC-ENSEMBLE-CSM</option><option value="ENO-ENSEMBLE-OMS">ENO-ENSEMBLE-OMS</option><option value="EPP">EPP</option><option value="ERP - Supply Chain">ERP - Supply Chain</option><option value="ESHOP">ESHOP</option><option value="Employee Tools">Employee Tools</option><option value="Ensemble Nightly Processing">Ensemble Nightly Processing</option><option value="Field Data Toolkit">Field Data Toolkit</option><option value="Financial / Operational Data">Financial / Operational Data</option><option value="Firebase">Firebase</option><option value="Framework">Framework</option><option value="GEOES">GEOES</option><option value="Genesys CP">Genesys CP</option><option value="Google Tag Manager (GTM)">Google Tag Manager (GTM)</option><option value="HCDE">HCDE</option><option value="HCDE-WSI">HCDE-WSI</option><option value="HLL-SPEEDPAY">HLL-SPEEDPAY</option><option value="HR">HR</option><option value="HYPERLITE">HYPERLITE</option><option value="Human">Human</option><option value="IIA Tool">IIA Tool</option><option value="IRE-IREP">IRE-IREP</option><option value="Identity Management">Identity Management</option><option value="KIT w/ Watson">KIT w/ Watson</option><option value="KNAK">KNAK</option><option value="Kafka">Kafka</option><option value="Kinaxis">Kinaxis</option><option value="LIVEQUOTE">LIVEQUOTE</option><option value="Legal">Legal</option><option value="MDR">MDR</option><option value="MMF-ESRI-ARCGIS">MMF-ESRI-ARCGIS</option><option value="MMFNP">MMFNP</option><option value="MOGLI-SMS">MOGLI-SMS</option><option value="MTA">MTA</option><option value="Material movement">Material movement</option><option value="NAPDW">NAPDW</option><option value="NBIE-GIS">NBIE-GIS</option><option value="NTCO-ECMS">NTCO-ECMS</option><option value="NiceWFM">NiceWFM</option><option value="O2">O2</option><option value="OSG">OSG</option><option value="Optius Order. Removal Tool (OORT)">Optius Order. Removal Tool (OORT)</option><option value="PX">PX</option><option value="Pay-EPPUI">Pay-EPPUI</option><option value="Pipefy">Pipefy</option><option value="Project Accounting">Project Accounting</option><option value="QF Blog">QF Blog</option><option value="QF Blog & MDU Resource  Center">QF Blog & MDU Resource  Center</option><option value="QF Chat bot + GenAI">QF Chat bot + GenAI</option><option value="QF Mobile App">QF Mobile App</option><option value="QF Mogli SMS Tool">QF Mogli SMS Tool</option><option value="QF Yext Local Pages">QF Yext Local Pages</option><option value="QF-COM">QF-COM</option><option value="QF-INT-LAYER">QF-INT-LAYER</option><option value="QF-SOM">QF-SOM</option><option value="QF-SQE">QF-SQE</option><option value="QF-Splunk">QF-Splunk</option><option value="QMate">QMate</option><option value="QMetric">QMetric</option><option value="QUARK">QUARK</option><option value="Quantumfiber.com">Quantumfiber.com</option><option value="Quickpath">Quickpath</option><option value="RX">RX</option><option value="Revenue">Revenue</option><option value="RoadMoves">RoadMoves</option><option value="SF-CJ">SF-CJ</option><option value="SF-MKTCLD">SF-MKTCLD</option><option value="SF-MKTQF">SF-MKTQF</option><option value="SF-QF Commerce Cloud">SF-QF Commerce Cloud</option><option value="SFC-CTL">SFC-CTL</option><option value="SFC_QF (main SF org)">SFC_QF (main SF org)</option><option value="SIMON">SIMON</option><option value="Section CDN">Section CDN</option><option value="Security">Security</option><option value="Sitetracker">Sitetracker</option><option value="SplunkIT">SplunkIT</option><option value="TM Forum">TM Forum</option><option value="Tax">Tax</option><option value="Treasury">Treasury</option><option value="Uniqual">Uniqual</option><option value="Utilisphere">Utilisphere</option><option value="Validity">Validity</option><option value="WATSONCHAT">WATSONCHAT</option><option value="Wallarm">Wallarm</option><option value="ZUORA">ZUORA</option>
                 </select>
             </div>
@@ -772,7 +814,7 @@
             <div class="control-group">
                 <label>Status</label>
                 <select id="filterStatus">
-                    <option value="">All</option>
+                    <option value="">All Statuses</option>
                     <option value="Blocked">Blocked</option>
                     <option value="Delayed">Delayed</option>
                     <option value="In Progress">In Progress</option>
@@ -787,7 +829,7 @@
             <button class="btn" onclick="resetFilters()">Reset</button>
         </div>
         
-        <div class="nav-bar" id="navBar">All Applications</div>
+        <div class="nav-bar" id="navBar">All Tasks</div>
         
         <div class="main-content">
             <div class="sidebar">
@@ -800,7 +842,7 @@
             
             <div class="detail-panel">
                 <div class="detail-body" id="detailBody">
-                    <div class="detail-empty">Select an application to view tasks</div>
+                    <div class="detail-empty">Loading...</div>
                 </div>
             </div>
         </div>
@@ -812,7 +854,7 @@
         allTasks.forEach(t => { taskLookup[t.id] = t; });
         
         let navHistory = [];
-        let currentView = { type: 'home' };
+        let currentView = { type: 'all' };  // Start with ALL tasks view
         
         document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
         
@@ -928,12 +970,34 @@
             return Object.values(apps).sort((a, b) => a.name.localeCompare(b.name));
         }
         
+        function getFilteredTasks() {
+            const appFilter = document.getElementById('filterApp').value;
+            const phaseFilter = document.getElementById('filterPhase').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            
+            let tasks = [...allTasks];
+            
+            if (appFilter) tasks = tasks.filter(t => t.app === appFilter);
+            if (phaseFilter) tasks = tasks.filter(t => t.phase === phaseFilter);
+            if (statusFilter) tasks = tasks.filter(t => t.status === statusFilter);
+            
+            // Sort by start time
+            tasks.sort((a, b) => {
+                const aTime = a.start ? new Date(a.start).getTime() : Infinity;
+                const bTime = b.start ? new Date(b.start).getTime() : Infinity;
+                return aTime - bTime;
+            });
+            
+            return tasks;
+        }
+        
         function updateStats() {
-            document.getElementById('statTotal').textContent = allTasks.length;
-            document.getElementById('statComplete').textContent = allTasks.filter(t => t.status === 'Complete').length;
-            document.getElementById('statProgress').textContent = allTasks.filter(t => t.status === 'In Progress').length;
-            document.getElementById('statDelayed').textContent = allTasks.filter(t => t.status === 'Delayed').length;
-            document.getElementById('statBlocked').textContent = allTasks.filter(t => t.status === 'Blocked').length;
+            const tasks = getFilteredTasks();
+            document.getElementById('statTotal').textContent = tasks.length;
+            document.getElementById('statComplete').textContent = tasks.filter(t => t.status === 'Complete').length;
+            document.getElementById('statProgress').textContent = tasks.filter(t => t.status === 'In Progress').length;
+            document.getElementById('statDelayed').textContent = tasks.filter(t => t.status === 'Delayed').length;
+            document.getElementById('statBlocked').textContent = tasks.filter(t => t.status === 'Blocked').length;
         }
         
         function goBack() {
@@ -954,35 +1018,72 @@
             document.getElementById('filterStatus').value = '';
             document.getElementById('filterTaskId').value = '';
             navHistory = [];
-            currentView = { type: 'home' };
+            currentView = { type: 'all' };
             render();
+        }
+        
+        function updateNavBar() {
+            let navHtml = '';
+            const appFilter = document.getElementById('filterApp').value;
+            const phaseFilter = document.getElementById('filterPhase').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            
+            if (currentView.type === 'task') {
+                navHtml = currentView.app + ' > Task #' + currentView.taskId;
+            } else if (currentView.type === 'app') {
+                navHtml = currentView.app;
+            } else {
+                navHtml = 'All Tasks';
+                
+                // Show active filters as badges
+                let badges = [];
+                if (phaseFilter) badges.push('<span class="nav-filter-badge">' + phaseFilter + '</span>');
+                if (statusFilter) badges.push('<span class="nav-filter-badge">' + statusFilter + '</span>');
+                if (appFilter) badges.push('<span class="nav-filter-badge">' + appFilter + '</span>');
+                
+                if (badges.length > 0) {
+                    navHtml += ' ' + badges.join(' ');
+                }
+            }
+            
+            document.getElementById('navBar').innerHTML = navHtml;
         }
         
         function render() {
             document.getElementById('btnBack').disabled = navHistory.length === 0;
             
-            // Update nav
-            if (currentView.type === 'home') document.getElementById('navBar').textContent = 'All Applications';
-            else if (currentView.type === 'app') document.getElementById('navBar').textContent = currentView.app;
-            else if (currentView.type === 'task') document.getElementById('navBar').textContent = currentView.app + ' > Task #' + currentView.taskId;
-            
+            updateNavBar();
+            updateStats();
             renderAppList();
             
-            if (currentView.type === 'task') renderTaskDetail(taskLookup[currentView.taskId]);
-            else if (currentView.type === 'app') renderAppDetail(currentView.app);
-            else document.getElementById('detailBody').innerHTML = '<div class="detail-empty">Select an application to view tasks</div>';
+            if (currentView.type === 'task') {
+                renderTaskDetail(taskLookup[currentView.taskId]);
+            } else if (currentView.type === 'app') {
+                renderAppDetail(currentView.app);
+            } else {
+                renderAllTasks();
+            }
         }
         
         function renderAppList() {
             const container = document.getElementById('appList');
             let apps = getAppData();
-            const filter = document.getElementById('filterApp').value;
-            if (filter) apps = apps.filter(a => a.name === filter);
+            const appFilter = document.getElementById('filterApp').value;
+            
+            // "All Tasks" button at top
+            const isAllSelected = currentView.type === 'all' && !appFilter;
+            
+            let html = `
+                <div class="all-tasks-btn ${isAllSelected ? 'selected' : ''}" onclick="showAllTasks()">
+                    📋 All Tasks (${allTasks.length})
+                </div>
+            `;
             
             document.getElementById('appCount').textContent = apps.length;
             
-            container.innerHTML = apps.map(app => {
-                const isSelected = currentView.type !== 'home' && currentView.app === app.name;
+            html += apps.map(app => {
+                const isSelected = (currentView.type === 'app' && currentView.app === app.name) || 
+                                   (appFilter === app.name);
                 const stats = ['Blocked', 'Delayed', 'In Progress', 'Complete'].filter(s => app.statuses[s]).map(s =>
                     `<span class="mini-stat ${getStatusClass(s)}">${app.statuses[s]}</span>`
                 ).join('');
@@ -995,17 +1096,121 @@
                     </div>
                 `;
             }).join('');
+            
+            container.innerHTML = html;
+        }
+        
+        function showAllTasks() {
+            document.getElementById('filterApp').value = '';
+            navHistory = [];
+            currentView = { type: 'all' };
+            render();
         }
         
         function selectApp(appName) {
-            navigateTo({ type: 'app', app: appName });
             document.getElementById('filterApp').value = appName;
+            navigateTo({ type: 'app', app: appName });
         }
         
         function selectTask(taskId) {
             const task = taskLookup[taskId];
             if (!task) return;
             navigateTo({ type: 'task', taskId, app: task.app });
+        }
+        
+        function renderAllTasks() {
+            const tasks = getFilteredTasks();
+            
+            if (tasks.length === 0) {
+                document.getElementById('detailBody').innerHTML = '<div class="empty-deps">No tasks match the current filters</div>';
+                return;
+            }
+            
+            const phaseFilter = document.getElementById('filterPhase').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            
+            let headerTitle = 'All Tasks';
+            if (phaseFilter) headerTitle = phaseFilter + ' Tasks';
+            if (statusFilter) headerTitle = (phaseFilter ? phaseFilter + ' - ' : '') + statusFilter + ' Tasks';
+            
+            const statusCounts = {
+                complete: tasks.filter(t => t.status === 'Complete').length,
+                inProgress: tasks.filter(t => t.status === 'In Progress').length,
+                delayed: tasks.filter(t => t.status === 'Delayed').length,
+                blocked: tasks.filter(t => t.status === 'Blocked').length
+            };
+            
+            const tasksHtml = tasks.map(task => {
+                const statusClass = getStatusClass(task.status);
+                const phaseClass = getPhaseClass(task.phase);
+                const preds = getDirectPreds(task.id);
+                
+                // Sort preds by status
+                const statusPriority = { 'Blocked': 0, 'Delayed': 1, 'In Progress': 2, 'Not Started': 3, 'Complete': 4 };
+                preds.sort((a, b) => (statusPriority[a.status] ?? 5) - (statusPriority[b.status] ?? 5));
+                
+                let predsHtml = '';
+                if (preds.length > 0) {
+                    predsHtml = `
+                        <div class="task-preds">
+                            <div class="task-preds-header">Waiting On (${preds.length} direct)</div>
+                            ${preds.map(p => `
+                                <div class="pred-item" onclick="event.stopPropagation(); selectTask('${p.id}')">
+                                    <div class="pred-status ${getStatusClass(p.status)}"></div>
+                                    <span class="pred-id">#${p.id}</span>
+                                    <span class="pred-name">${p.name}</span>
+                                    <span class="pred-app ${p.app !== task.app ? 'cross' : 'same'}">${p.app}${p.app !== task.app ? ' [Cross-App]' : ''}</span>
+                                    <span class="pred-status-badge ${getStatusClass(p.status)}">${p.status}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+                
+                return `
+                    <div class="task-card">
+                        <div class="task-card-main" onclick="selectTask('${task.id}')">
+                            <div class="task-phase-bar ${phaseClass}"></div>
+                            <div class="task-status-col ${statusClass}">${task.status}</div>
+                            <div class="task-info">
+                                <div class="task-info-top">
+                                    <span class="task-id">#${task.id}</span>
+                                    <span class="task-name">${task.name}</span>
+                                    <span class="task-app-badge">${task.app}</span>
+                                </div>
+                                <div class="task-info-bottom">${task.owner ? task.owner.split('@')[0] : 'Unassigned'}</div>
+                            </div>
+                            <div class="task-times">
+                                <div class="task-time-row">
+                                    <span class="task-time-label">Start</span>
+                                    <span class="task-time-value">${formatShortTime(task.start)}</span>
+                                </div>
+                                <div class="task-time-row">
+                                    <span class="task-time-label">End</span>
+                                    <span class="task-time-value">${formatShortTime(task.end)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        ${predsHtml}
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('detailBody').innerHTML = `
+                <div class="app-header">
+                    <div class="app-header-info">
+                        <div class="app-header-name">${headerTitle}</div>
+                        <div class="app-header-meta">${tasks.length} tasks</div>
+                    </div>
+                    <div class="app-header-stats">
+                        <div class="app-stat"><div class="app-stat-value green">${statusCounts.complete}</div><div class="app-stat-label">Complete</div></div>
+                        <div class="app-stat"><div class="app-stat-value blue">${statusCounts.inProgress}</div><div class="app-stat-label">In Progress</div></div>
+                        <div class="app-stat"><div class="app-stat-value orange">${statusCounts.delayed}</div><div class="app-stat-label">Delayed</div></div>
+                        <div class="app-stat"><div class="app-stat-value red">${statusCounts.blocked}</div><div class="app-stat-label">Blocked</div></div>
+                    </div>
+                </div>
+                ${tasksHtml}
+            `;
         }
         
         function renderAppDetail(appName) {
@@ -1176,17 +1381,6 @@
                 const sameApps = Object.entries(upstreamByApp).filter(([_, v]) => !v.isCross);
                 
                 [...crossApps, ...sameApps].forEach(([appName, data]) => {
-                    // Rebuild tree for this app only
-                    const appTree = upstreamTree.filter(node => {
-                        // Check if this node or any children belong to this app
-                        const belongsToApp = (n) => {
-                            if (n.task.app === appName) return true;
-                            if (n.children) return n.children.some(c => belongsToApp(c));
-                            return false;
-                        };
-                        return belongsToApp(node);
-                    });
-                    
                     // Filter tree to only show tasks from this app
                     const filterTreeByApp = (tree, app) => {
                         return tree.filter(node => node.task.app === app).map(node => ({
@@ -1333,9 +1527,13 @@
             document.getElementById(id).addEventListener('change', function() {
                 if (id === 'filterApp' && this.value) {
                     navigateTo({ type: 'app', app: this.value });
-                } else if (currentView.type === 'app') {
+                } else if (id === 'filterApp' && !this.value) {
+                    // Cleared app filter - go back to all tasks
+                    navHistory = [];
+                    currentView = { type: 'all' };
                     render();
                 } else {
+                    // Phase or Status filter changed - stay on current view but refresh
                     render();
                 }
             });
